@@ -1,12 +1,33 @@
-import "./App.css";
+// import logo from './logo.svg';
+import './App.css';
+import { Routes, Route } from 'react-router-dom'
+import { Home } from './Pages/Home';
+import { Works } from './Pages/Works';
+import { Input } from './Pages/Input';
+import { About } from './Pages/About';
+import { Offer } from './Pages/Offer';
+import { Technology } from './Pages/Technology';
+
+import { useState } from 'react';
+import { Result } from './Pages/Result';
 
 function App() {
+  const [result, setResult] = useState({});
   return (
-    <main class="flex justify-center gap-4 flex-col min-h-screen">
-      <h1 class="text-3xl text-center font-bold underline">React & Tailwind CSS Starter Pack</h1>
-      <p class="text-center text-xl">This is a starter pack for React & Tailwind CSS projects.</p>
-      <img src="https://bit.ly/3wsmzTy" alt="meme" class="mx-auto" />
-    </main>
+    <>
+      <Routes>
+        <Route path='/' element={<Home />} />
+        <Route path='/works' element={<Works />} />
+        <Route path='/liver' element={<Input path="liver" setResult={setResult} />} />
+        <Route path='/diabetes' element={<Input path="diabetes" setResult={setResult} />} />
+        <Route path="/heart" element={<Input path="heart" setResult={setResult} />} />
+        <Route path="/kidney" element={<Input path="kidney" setResult={setResult} />} />
+        <Route path='/about' element={<About />} />
+        <Route path='/offer' element={<Offer />} />
+        <Route path='/tech' element={<Technology />} />
+        <Route path='/Result' element={<Result result={result} />} />
+      </Routes>
+    </>
   );
 }
 
